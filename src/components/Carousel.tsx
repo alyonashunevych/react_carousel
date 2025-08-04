@@ -24,8 +24,8 @@ const Carousel: React.FC<Props> = ({
   const listWidth = (itemWidth + gap) * images.length - gap;
   const maxTranslateValue = -(listWidth - frameWidth);
 
-  const getStepWidth = (x: number): number => {
-    return (itemWidth + gap) * x - gap;
+  const getStepWidth = (stepValue: number): number => {
+    return (itemWidth + gap) * stepValue;
   };
 
   const [translateValue, setTranslateValue] = useState(0);
@@ -37,7 +37,7 @@ const Carousel: React.FC<Props> = ({
         onClick={() =>
           setTranslateValue(
             translateValue + getStepWidth(step) <= 0
-              ? translateValue + getStepWidth(step) + gap
+              ? translateValue + getStepWidth(step)
               : 0,
           )
         }
@@ -90,7 +90,7 @@ const Carousel: React.FC<Props> = ({
           setTranslateValue(
             translateValue - getStepWidth(step) - gap < maxTranslateValue
               ? maxTranslateValue
-              : translateValue - getStepWidth(step) - gap,
+              : translateValue - getStepWidth(step),
           )
         }
       >

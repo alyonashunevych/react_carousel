@@ -33,7 +33,7 @@ class App extends React.Component<{}, State> {
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    if (name in this.state) {
+    if (name in this.state && !isNaN(Number(value))) {
       this.setState({
         [name]: Number(value),
       } as unknown as Pick<State, keyof State>);
